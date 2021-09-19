@@ -20,7 +20,12 @@ if __name__ == '__main__':
         else:
             trozo_descifrado = xorhex(xorhex(trozo_cifrado,key),trozo_cifrado_anterior)
         trozo_cifrado_anterior = trozo_cifrado
+        if len(trozo_descifrado)<4:
+                trozo_descifrado = "0"+trozo_descifrado
         mensaje_descifrado = mensaje_descifrado + trozo_descifrado
         
     print("Mensaje descifrado en hexadecimal:")
     print(mensaje_descifrado)
+    bytes_array = bytes.fromhex(mensaje_descifrado)
+    ascii_str = bytes_array.decode()
+    print(ascii_str)
